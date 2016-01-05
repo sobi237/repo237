@@ -1,0 +1,204 @@
+public class binarysearchtree extends binarytree
+
+{
+       public void insert (int item) 
+       
+   {
+   
+   binarytreenode current;                     //reference variable to traverse tree
+   binarytreenode trailcurrent = null;         //reference variable behind current 
+   binarytreenode newnode;                     //reference variable to create node
+    
+    
+             newnode = new binarytreenode();
+             
+             
+             newnode.info = item;
+             newnode.ilink = null;
+             newnode.rlink = null;
+             
+             
+             if (root == null)
+             
+             root = newnode;
+             
+      else
+   {
+        current = root;
+        
+        while (current != null)
+        
+        {
+        
+               trailcurrent = current;
+               if (current.info == item)
+               
+   {
+          system.err.print("item is already in the list. no duplicates allowed.");
+          
+          return;
+          
+   }
+   
+   else 
+   
+   {
+             if (current.info > item)
+             
+             current = current.ilink;
+             else 
+             current = current.rlink;
+             
+             }
+             
+                    }
+                    
+            if (trailcurrent.info > item)
+               
+                      trailcurrent.ilink = newnode;
+            
+            else
+                    
+                      trailcurrent.rlink = newnode;
+                      
+            }
+            
+        }
+             
+   //finds the node to be delete and passes it to deldetenode
+   public void delete (int item)
+   
+      {
+              binarytreenode current;           //reference variable to traverse tree 
+              binarytreenode trailcurrent;      //reference variable behind current
+            
+          
+          boolean found = false;
+          
+          if (root ==null)
+          
+          system.err.println ("connot delete from an empty tree.");
+          
+          else 
+          
+      {
+      
+           current = root;
+           trailcurrent = root;
+           
+           
+           while (current != null && !found)
+           
+   {
+          
+            if (current.info == item)
+            
+            found = true;
+           
+       else
+            
+          {
+                    trailcurrent = current;
+                    
+            if (current.info > item)
+            
+                      current = current.ilink;
+              
+        else 
+                      current = current.rlink;
+                      
+   }
+         
+          } 
+          
+             if (current == null)
+             
+             system.out.println ("deldete item is not in the list.");
+             
+      else 
+               if (found)
+               
+          {
+                if (current == root)
+                
+                root = deldtenode(root);
+                
+        else
+                  if (trailcurrent.info > item)
+                  
+   
+        trailcurrent.rlink = deletenode(trailcurrent.ilink);
+        
+    else
+            
+             trailcurrent.rlink = deletenode(trailcurrent.rlink);
+              
+    }
+             
+            }
+            
+      }
+               //removes node from tree
+               private binarytreenode deletenode (binarytreenode n)
+               
+  {
+      
+              binarytreenode current;               //reference variable to traverse tree
+              binarytreenode current;              //reference variable behind current 
+ 
+          
+          if (n == null)
+          
+    system.err.println ("error: node to be deldete is null.");
+    
+       else 
+              
+               if (n.ilink == null && n.rlink == null)
+                
+                n = null;
+                
+            else 
+             
+        if (n.ilink == null)
+          
+          n = n.rlink;
+          
+    else 
+    
+         if (n.rlink == null)
+         
+         n = n.ilink;
+         
+    else 
+      
+  {
+  
+       currnet = n.ilink;
+       trailcurrent = null;
+       
+      while (current.rlink !=null)
+      
+  {           
+            trailcurrent = current;
+            current = current.rlink;
+            
+    }
+    
+        n.info = current.info;
+        
+        
+            if (trailcurrent == null)
+            
+        n.ilink = current.ilink;
+      
+    else
+     
+           trailcurrent.rlink = current.ilink;
+           
+           
+      }
+      
+               return n;
+               
+      }
+      
