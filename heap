@@ -1,0 +1,84 @@
+import java.util.arrayList;
+import java.util.liast;
+import java.util.nosuchelementexception;
+import java.util.random;
+
+public class arraylistheap {
+  
+  private list<integar> a;
+  
+  public arraylistheap() 
+  {
+  
+               a = new arraylist<>();
+     }
+  
+  private void bubbledown(int n)
+  
+  {
+             int minchlidindex = minchlidindex(n);
+              
+              while (minchildindex != -1 && a.get(minchildindex) < a.get(n)) 
+  {
+  
+      swap(minchildindex, n);
+      n = minchildindex = minchildindex(n);
+      
+}
+    }
+
+        public boolean isheap() 
+ {
+
+        for (int i = 1; i < a.size(); ++i)
+        {
+            if(par(i) >=0) 
+            {
+            if (a.get(par(i)) > a.get(i)) 
+            {
+                    return false;
+                    }
+                  }
+                }
+                    
+                    return true;
+                     
+         }
+         
+         
+         private void swap(int i, int j) 
+         
+         {
+            int tmp = a.get(i);
+            a.set(i, a.get(j));
+            a.set(j, tmp);
+            
+            }
+            
+            @override 
+            public string tostring() 
+            
+            {
+                     return a.tostring();
+                     
+                   }
+            
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+         
+         
+         
+         
+         
+         
+         
+         
+
+  
